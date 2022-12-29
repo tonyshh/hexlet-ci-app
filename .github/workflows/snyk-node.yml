@@ -1,3 +1,4 @@
+
 name: project CI
 
 on: push
@@ -12,7 +13,7 @@ jobs:
 
       - uses: snyk/actions/node@master
         env: 
-          SNYK_TOKEN: ${{ secrets.709f6104-c31c-4f3e-852f-cd5d0d7b71e9 }}
+          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
 
       - uses: actions/setup-node@v3
         with: 
@@ -22,5 +23,3 @@ jobs:
       - run: make setup
       - run: make test
       - run: make lint
-  
-  
