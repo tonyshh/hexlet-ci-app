@@ -1,0 +1,26 @@
+name: project CI
+
+on: push
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+    
+    steps:
+      - uses: actions/checkout@v3
+
+      - uses: snyk/actions/node@master
+        env: 
+          SNYK_TOKEN: ${{ secrets.709f6104-c31c-4f3e-852f-cd5d0d7b71e9 }}
+
+      - uses: actions/setup-node@v3
+        with: 
+          node-version: 16.x
+          cache: 'npm'
+
+      - run: make setup
+      - run: make test
+      - run: make lint
+  
+  
